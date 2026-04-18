@@ -27,6 +27,10 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         int checkId = getIntent().getIntExtra("CHECK_ID", -1);
 
         TextView tvDate = findViewById(R.id.tvDetailDate);
@@ -49,19 +53,23 @@ public class DetailActivity extends AppCompatActivity {
                 tvDriver.setText("Driver: " + check.driverName);
                 tvStatus.setText("Status: " + check.overallStatus);
 
-                // Implicit Intent — Email Report button (requirement 2.3)
                 btnEmail.setOnClickListener(v -> {
                     StringBuilder body = new StringBuilder();
                     List<Defect> defects = defectAdapter.getDefects();
                     for (Defect d : defects) {
-                        body.append("- ").append(d.description)
-                                .append(" (").append(d.severity).append(")\n");
+                        body.append("- ")
+                                .append(d.description)
+                                .append(" (")
+                                .append(d.severity)
+                                .append(")\n");
                     }
 
                     Intent emailIntent = new Intent(Intent.ACTION_SEND);
                     emailIntent.setType("message/rfc822");
-                    emailIntent.putExtra(Intent.EXTRA_SUBJECT,
-                            "Safety Defect Report: " + check.vehicleRegistration);
+                    emailIntent.putExtra(
+                            Intent.EXTRA_SUBJECT,
+                            "Safety Defect Report: " + check.vehicleRegistration
+                    );
                     emailIntent.putExtra(Intent.EXTRA_TEXT, body.toString());
                     startActivity(Intent.createChooser(emailIntent, "Send via"));
                 });
@@ -69,5 +77,11 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         viewModel.getDefectsForCheck(checkId).observe(this, defectAdapter::setDefects);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }
