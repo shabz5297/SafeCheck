@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView android:text="New Safety Check"
+        android:textSize="20sp" android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText android:id="@+id/etVehicleReg"
+        android:hint="Vehicle Registration *"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText android:id="@+id/etDriverName"
+        android:hint="Driver Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView android:text="Overall Status:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <RadioGroup android:id="@+id/rgStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+        <RadioButton android:id="@+id/rbPass"
+            android:text="Pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioButton android:id="@+id/rbFail"
+            android:text="Fail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RadioGroup>
+
+    <EditText android:id="@+id/etDefectDescription"
+        android:hint="Defect Description (e.g. Cracked Mirror)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_marginBottom="10dp"/>
+
+    <RadioGroup android:id="@+id/rgSeverity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <RadioButton android:id="@+id/rbLow"
+            android:text="Low Severity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioButton android:id="@+id/rbHigh"
+            android:text="High Severity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RadioGroup>
+
+    <Button android:id="@+id/btnSave"
+        android:text="Save Check"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
